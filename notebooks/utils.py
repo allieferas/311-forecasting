@@ -2,6 +2,7 @@ from tqdm import tqdm
 import pandas as pd
 
 def time_series_workload(df, start_col='Open Date', end_col='Closed Date', label_col='Subject'):
+    """Function for adding the workload for time series."""
 
     alldates = pd.date_range(start=df[start_col].min(),end=df[end_col].max(),freq='D')
     dates, labels = [], []
