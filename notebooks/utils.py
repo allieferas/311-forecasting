@@ -1,8 +1,8 @@
 from tqdm import tqdm
 import pandas as pd
 
-def time_series_workload(df, start_col='Open Date', end_col='Closed Date', label_col='Subject'):
-    """Function for adding the workload for time series."""
+def time_series_workload(df, city_name, start_col='open_date', end_col='close_date', label_col='department'):
+    """Function for adding the workload for time series. Dataframe should only contain one city."""
 
     alldates = pd.date_range(start=df[start_col].min(),end=df[end_col].max(),freq='D')
     dates, labels = [], []
@@ -19,5 +19,7 @@ def time_series_workload(df, start_col='Open Date', end_col='Closed Date', label
         .reset_index()
         .melt(id_vars='date')
     )
+
+    workload['city'] = city_name
 
     return workload
