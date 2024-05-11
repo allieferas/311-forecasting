@@ -1,5 +1,7 @@
 from tqdm import tqdm
 import pandas as pd
+import numpy as np
+from datetime import timedelta
 
 def time_series_workload(df, city_name, start_col='open_date', end_col='close_date', label_col='department'):
     """Function for adding the workload for time series. Dataframe should only contain one city."""
@@ -40,24 +42,20 @@ def time_series_workload(df, city_name, start_col='open_date', end_col='close_da
 def time_series_newtix(df, city_name, start_col='open_date', end_col='close_date', label_col='department'):
     """Function for adding the workload for time series. Dataframe should only contain one city."""
 
-    df['year'] = df[start_col].dt.isocalendar().year
-    df['week'] = df[start_col].dt.isocalendar().week
-    df['year_week'] = (df['year'].astype(str) + df['week'].astype(str).str.zfill(2)).astype(int)
+    df['week_start'] = (df[start_col] - df[start_col].dt.weekday * timedelta(days=1)).dt.date
 
-    yw = (
-        pd.MultiIndex
-        .from_product([range(df['year'].min(),df['year'].max()+1),range(1,53)], names=['year','week'])
-        .to_frame(index=False)
-    )
-    yw['year_week'] = (yw['year'].astype(str) + yw['week'].astype(str).str.zfill(2)).astype(int)
+    start = df['week_start'].min() - timedelta(days=7)
+    end = df['week_start'].max()
+    alldates = pd.date_range(start=start,end=end,freq='W') + timedelta(days=1)
 
     ywl = (
         pd.MultiIndex
-        .from_product([yw['year_week'],df[label_col].unique()], names=['year_week',label_col])
+        .from_product([alldates,df[label_col].unique()], names=['week_start',label_col])
         .to_frame(index=False)
     )
 
-    counts = df.groupby(['year_week',label_col]).size().reset_index().rename(columns={0: 'count'})
+    counts = df.groupby(['week_start',label_col]).size().reset_index().rename(columns={0: 'count'})
+    counts['week_start'] = pd.to_datetime(counts['week_start'])
     final = ywl.merge(counts, how = 'left').fillna(0)
 
     final['city'] = city_name
