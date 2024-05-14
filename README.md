@@ -10,47 +10,6 @@ Project steps:
 * model_training.ipynb - training and predicting all 16 models based on hyperparameters
 * visualization.ipynb
 
-<style>
-    a {color: black;}
-    .heatMap {
-        width: 70%;
-        text-align: center;
-    }
-    .heatMap th {
-        background: black;
-        word-wrap: break-word;
-        text-align: center;
-        color: white;
-    }
-    .heatMap tr:nth-child(1) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(2) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(3) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(4) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(5) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(6) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(7) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(8) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(9) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(10) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(11) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(12) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(13) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(14) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(15) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(16) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(17) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(18) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(19) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(20) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(21) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(22) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(23) { background: #90EE90; color: black}
-    .heatMap tr:nth-child(24) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(25) { background: #FF774C; color: black}
-    .heatMap tr:nth-child(26) { background: #90EE90; color: black}
-</style>
-
-<div class="heatMap">
 
 | City            | Compatible | Avalibility       | Notes / Errors      | Website                                                                                                      |
 | :-------------: | :--------: | :---------------: | :-------------------------------: | :----------------------------------------------------------------------------------------------------------: |
